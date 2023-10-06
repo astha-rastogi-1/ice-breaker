@@ -14,7 +14,7 @@ load_dotenv()
 # """
 
 
-def ice_break(name: str) -> PersonIntel:
+def ice_break(name: str) -> tuple[PersonIntel, str]:
     linkedin_profile_url = lookup(name="Eden Marco")
     # print(f"URL: {linkedin_profile_url}")
 
@@ -43,7 +43,7 @@ def ice_break(name: str) -> PersonIntel:
 
     result = chain.run(information=linkedin_data.json())
     print(result)
-    return person_intel_parser.parse(result)
+    return person_intel_parser.parse(result), linkedin_data.get("profile_pic_url")
 
 
 if __name__ == "__main__":
